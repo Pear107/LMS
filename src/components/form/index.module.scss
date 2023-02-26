@@ -1,0 +1,40 @@
+.form {
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20rpx;
+  border-radius: 16rpx;
+  background: #fff;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 20rpx;
+}
+
+.input {
+  padding: 6rpx 12rpx;
+  border: 2rpx solid #0081ff;
+  border-radius: 16rpx;
+}
+
+.btnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn {
+  padding: 12rpx 24rpx;
+  border-radius: 16rpx;
+}
+
+.bgGreen {
+  background: #39b54a;
+}
+
+.bgRed {
+  background: #e54d42;
+}

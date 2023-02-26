@@ -1,0 +1,66 @@
+page {
+  width: 100vh;
+  height: 100vw;
+  background: #f1f2f6;
+}
+
+button {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+button::after {
+  border: none;
+}
+
+.btn-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10rpx;
+}
+
+.btn {
+  width: auto;
+  height: auto;
+  padding: 10rpx 15rpx;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #fff;
+}
+
+.bg-green {
+  background: #39b54a;
+}
+
+.bg-red {
+  background: #e54d42;
+}
+
+.w-vw-max {
+  width: 100vw !important;
+}
+
+.h-vh-max {
+  height: 100vh !important;
+}
+
+.cover {
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  background: #1111;
+}
+
+.hidden {
+  display: none;
+}
