@@ -8,7 +8,7 @@ export default {
     "pages/manage/activity",
     "pages/manage/order",
     "pages/manage/schedule",
-    // "pages/manage/user/index",
+    "pages/manage/user/index",
   ],
   window: {
     backgroundTextStyle: "light",

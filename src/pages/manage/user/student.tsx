@@ -2,40 +2,33 @@ import { BaseEventOrig, View, Button } from "@tarojs/components";
 import Table, { AnyOpt, IColumns } from "taro3-table";
 import React, { useEffect, useState } from "react";
 
-import { Form, FormInput, FormItem } from "../../components/form";
+import { Form, FormInput, FormItem } from "../../../components/form";
 
-type dataType = {
-  id: string;
-  name: string;
-  period: string;
-  teacher: string;
-  faculty: string;
-  grade: string;
-  class: string;
-  img: string;
-  createTime: string;
-  creator: string;
-};
-
-const Schedule: React.FC = () => {
-  const dataSource: dataType[] = [
+const Student: React.FC = () => {
+  const dataSource: AnyOpt[] = [
     {
       id: "1",
       name: "test",
-      period: "test",
-      teacher: "test",
-      faculty: "test",
-      grade: "",
-      class: "",
-      img: "",
+      local: "test",
+      introduce: "test",
+      admin: "test",
       createTime: "test",
       creator: "test",
+    },
+    {
+      id: "1",
+      name: "测试",
+      local: "测试",
+      introduce: "测试",
+      admin: "测试",
+      createTime: "测试",
+      creator: "测试",
     },
   ];
 
   const columns: IColumns[] = [
     {
-      title: "课程名",
+      title: "实验室名称",
       dataIndex: "name",
       fixed: "left",
       sort: true,
@@ -43,33 +36,18 @@ const Schedule: React.FC = () => {
       width: 50,
     },
     {
-      title: "第几节课",
-      dataIndex: "period",
+      title: "所在教学楼",
+      dataIndex: "local",
       width: 50,
     },
     {
-      title: "实验室老师",
-      dataIndex: "teacher",
+      title: "实验室简介",
+      dataIndex: "introduce",
       width: 50,
     },
     {
-      title: "院系",
-      dataIndex: "faculty",
-      width: 50,
-    },
-    {
-      title: "年级",
-      dataIndex: "grade",
-      width: 50,
-    },
-    {
-      title: "班级",
-      dataIndex: "class",
-      width: 50,
-    },
-    {
-      title: "课表图",
-      dataIndex: "img",
+      title: "管理人",
+      dataIndex: "admin",
       width: 50,
     },
     {
@@ -86,7 +64,7 @@ const Schedule: React.FC = () => {
       title: "操作",
       dataIndex: "id",
       width: 50,
-      render(text, record: dataType, index) {
+      render(text, record, index) {
         return (
           <View className="btn-wrap">
             <Button
@@ -110,18 +88,7 @@ const Schedule: React.FC = () => {
 
   const [showForm, setShowForm] = useState<boolean>(false);
   const [Index, setIndex] = useState<number>();
-  const [record, setRecord] = useState<dataType>({
-    id: "",
-    name: "",
-    period: "",
-    teacher: "",
-    faculty: "",
-    grade: "",
-    class: "",
-    img: "",
-    createTime: "",
-    creator: "",
-  });
+  const [record, setRecord] = useState<{ [key: string]: any }>({});
   return (
     <>
       <View className={`cover ${showForm ? "" : "hidden"}`}>
@@ -140,32 +107,23 @@ const Schedule: React.FC = () => {
             });
           }}
         >
-          <FormItem label="课程名">
-            <FormInput value={record.name} />
+          <FormItem label="实验室名称">
+            <FormInput value={record["name"]} />
           </FormItem>
-          <FormItem label="第几节课">
-            <FormInput value={record.period} />
+          <FormItem label="所在教学楼">
+            <FormInput value={record["local"]} />
           </FormItem>
-          <FormItem label="实验室老师">
-            <FormInput value={record.teacher} />
+          <FormItem label="实验室简介">
+            <FormInput value={record["introduce"]} />
           </FormItem>
-          <FormItem label="院系">
-            <FormInput value={record.faculty} />
-          </FormItem>
-          <FormItem label="年级">
-            <FormInput value={record.grade} />
-          </FormItem>
-          <FormItem label="班级">
-            <FormInput value={record.class} />
-          </FormItem>
-          <FormItem label="课表图">
-            <FormInput value={record.img} />
+          <FormItem label="管理人">
+            <FormInput value={record["admin"]} />
           </FormItem>
           <FormItem label="创建时间">
-            <FormInput value={record.createTime} />
+            <FormInput value={record["createTime"]} />
           </FormItem>
           <FormItem label="创建人">
-            <FormInput value={record.creator} />
+            <FormInput value={record["creator"]} />
           </FormItem>
         </Form>
       </View>
@@ -185,4 +143,4 @@ const Schedule: React.FC = () => {
   );
 };
 
-export default Schedule;
+export default Student;

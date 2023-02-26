@@ -4,8 +4,18 @@ import React, { useEffect, useState } from "react";
 
 import { Form, FormInput, FormItem } from "../../components/form";
 
+type dataType = {
+  id: string;
+  name: string;
+  local: string;
+  introduce: string;
+  admin: string;
+  createTime: string;
+  creator: string;
+};
+
 const Lab: React.FC = () => {
-  const dataSource: AnyOpt[] = [
+  const dataSource: dataType[] = [
     {
       id: "1",
       name: "test",
@@ -64,7 +74,7 @@ const Lab: React.FC = () => {
       title: "操作",
       dataIndex: "id",
       width: 50,
-      render(text, record, index) {
+      render(text, record: dataType, index) {
         return (
           <View className="btn-wrap">
             <Button
@@ -88,7 +98,15 @@ const Lab: React.FC = () => {
 
   const [showForm, setShowForm] = useState<boolean>(false);
   const [Index, setIndex] = useState<number>();
-  const [record, setRecord] = useState<{ [key: string]: any }>({});
+  const [record, setRecord] = useState<dataType>({
+    id: "1",
+    name: "",
+    local: "",
+    introduce: "",
+    admin: "",
+    createTime: "",
+    creator: "",
+  });
   return (
     <>
       <View className={`cover ${showForm ? "" : "hidden"}`}>

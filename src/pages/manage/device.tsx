@@ -4,31 +4,36 @@ import React, { useEffect, useState } from "react";
 
 import { Form, FormInput, FormItem } from "../../components/form";
 
+type dataType = {
+  id: string;
+  name: string;
+  introduce: string;
+  buyTime: string;
+  number: string;
+  img: string;
+  attention: string;
+  createTime: string;
+  creator: string;
+};
+
 const Devices: React.FC = () => {
-  const dataSource: AnyOpt[] = [
+  const dataSource: dataType[] = [
     {
       id: "1",
       name: "test",
-      local: "test",
       introduce: "test",
-      admin: "test",
+      buyTime: "test",
+      number: "test",
+      img: "test",
+      attention: "test",
       createTime: "test",
       creator: "test",
-    },
-    {
-      id: "1",
-      name: "测试",
-      local: "测试",
-      introduce: "测试",
-      admin: "测试",
-      createTime: "测试",
-      creator: "测试",
     },
   ];
 
   const columns: IColumns[] = [
     {
-      title: "实验室名称",
+      title: "设备名称",
       dataIndex: "name",
       fixed: "left",
       sort: true,
@@ -36,18 +41,28 @@ const Devices: React.FC = () => {
       width: 50,
     },
     {
-      title: "所在教学楼",
-      dataIndex: "local",
-      width: 50,
-    },
-    {
-      title: "实验室简介",
+      title: "用途简介",
       dataIndex: "introduce",
       width: 50,
     },
     {
-      title: "管理人",
-      dataIndex: "admin",
+      title: "购买时间",
+      dataIndex: "buyTime",
+      width: 50,
+    },
+    {
+      title: "设备编号",
+      dataIndex: "number",
+      width: 50,
+    },
+    {
+      title: "图片",
+      dataIndex: "img",
+      width: 50,
+    },
+    {
+      title: "注意事项",
+      dataIndex: "attention",
       width: 50,
     },
     {
@@ -64,7 +79,7 @@ const Devices: React.FC = () => {
       title: "操作",
       dataIndex: "id",
       width: 50,
-      render(text, record, index) {
+      render(text, record: dataType, index) {
         return (
           <View className="btn-wrap">
             <Button
@@ -88,7 +103,17 @@ const Devices: React.FC = () => {
 
   const [showForm, setShowForm] = useState<boolean>(false);
   const [Index, setIndex] = useState<number>();
-  const [record, setRecord] = useState<{ [key: string]: any }>({});
+  const [record, setRecord] = useState<dataType>({
+    id: "",
+    name: "",
+    introduce: "",
+    buyTime: "",
+    number: "",
+    img: "",
+    attention: "",
+    createTime: "",
+    creator: "",
+  });
   return (
     <>
       <View className={`cover ${showForm ? "" : "hidden"}`}>
@@ -107,23 +132,29 @@ const Devices: React.FC = () => {
             });
           }}
         >
-          <FormItem label="实验室名称">
-            <FormInput value={record["name"]} />
+          <FormItem label="设备名称">
+            <FormInput value={record.name} />
           </FormItem>
-          <FormItem label="所在教学楼">
-            <FormInput value={record["local"]} />
+          <FormItem label="用途简介">
+            <FormInput value={record.id} />
           </FormItem>
-          <FormItem label="实验室简介">
-            <FormInput value={record["introduce"]} />
+          <FormItem label="购买时间">
+            <FormInput value={record.buyTime} />
           </FormItem>
-          <FormItem label="管理人">
-            <FormInput value={record["admin"]} />
+          <FormItem label="设备编号">
+            <FormInput value={record.number} />
+          </FormItem>
+          <FormItem label="图片">
+            <FormInput value={record.img} />
+          </FormItem>
+          <FormItem label="注意事项">
+            <FormInput value={record.attention} />
           </FormItem>
           <FormItem label="创建时间">
-            <FormInput value={record["createTime"]} />
+            <FormInput value={record.createTime} />
           </FormItem>
           <FormItem label="创建人">
-            <FormInput value={record["creator"]} />
+            <FormInput value={record.creator} />
           </FormItem>
         </Form>
       </View>

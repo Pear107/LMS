@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./assets/scss/app.scss";
 
 class App extends Component {
   componentDidMount() {}

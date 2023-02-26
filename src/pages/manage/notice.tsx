@@ -4,31 +4,30 @@ import React, { useEffect, useState } from "react";
 
 import { Form, FormInput, FormItem } from "../../components/form";
 
+type dataType = {
+  id: string;
+  name: string;
+  text: string;
+  img: string;
+  createTime: string;
+  creator: string;
+};
+
 const Announcement: React.FC = () => {
   const dataSource: AnyOpt[] = [
     {
       id: "1",
       name: "test",
-      local: "test",
-      introduce: "test",
-      admin: "test",
+      text: "test",
+      img: "test",
       createTime: "test",
       creator: "test",
-    },
-    {
-      id: "1",
-      name: "测试",
-      local: "测试",
-      introduce: "测试",
-      admin: "测试",
-      createTime: "测试",
-      creator: "测试",
     },
   ];
 
   const columns: IColumns[] = [
     {
-      title: "实验室名称",
+      title: "标题",
       dataIndex: "name",
       fixed: "left",
       sort: true,
@@ -36,18 +35,13 @@ const Announcement: React.FC = () => {
       width: 50,
     },
     {
-      title: "所在教学楼",
-      dataIndex: "local",
+      title: "正文",
+      dataIndex: "text",
       width: 50,
     },
     {
-      title: "实验室简介",
-      dataIndex: "introduce",
-      width: 50,
-    },
-    {
-      title: "管理人",
-      dataIndex: "admin",
+      title: "图片",
+      dataIndex: "img",
       width: 50,
     },
     {
@@ -64,7 +58,7 @@ const Announcement: React.FC = () => {
       title: "操作",
       dataIndex: "id",
       width: 50,
-      render(text, record, index) {
+      render(text, record: dataType, index) {
         return (
           <View className="btn-wrap">
             <Button
@@ -88,7 +82,14 @@ const Announcement: React.FC = () => {
 
   const [showForm, setShowForm] = useState<boolean>(false);
   const [Index, setIndex] = useState<number>();
-  const [record, setRecord] = useState<{ [key: string]: any }>({});
+  const [record, setRecord] = useState<dataType>({
+    id: "",
+    name: "",
+    text: "",
+    img: "",
+    createTime: "",
+    creator: "",
+  });
   return (
     <>
       <View className={`cover ${showForm ? "" : "hidden"}`}>
@@ -107,17 +108,14 @@ const Announcement: React.FC = () => {
             });
           }}
         >
-          <FormItem label="实验室名称">
+          <FormItem label="标题">
             <FormInput value={record["name"]} />
           </FormItem>
-          <FormItem label="所在教学楼">
-            <FormInput value={record["local"]} />
+          <FormItem label="正文">
+            <FormInput value={record["text"]} />
           </FormItem>
-          <FormItem label="实验室简介">
-            <FormInput value={record["introduce"]} />
-          </FormItem>
-          <FormItem label="管理人">
-            <FormInput value={record["admin"]} />
+          <FormItem label="图片">
+            <FormInput value={record["img"]} />
           </FormItem>
           <FormItem label="创建时间">
             <FormInput value={record["createTime"]} />
